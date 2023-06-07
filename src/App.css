@@ -4,6 +4,7 @@ p{
   padding: 0;
 }
 
+
 /*
 html,body,div,form,fieldset,h1,h2,h3,h4,h5,h6,p,blockquote,pre,li,ul,ol
 {
@@ -38,6 +39,12 @@ img
 
 /* ------------------------------------ */
 
+.naviga{
+  height: 11vh;
+  background-color: brown;
+}
+
+/* ------------------------------------ */
 /* inset cuts spaces from teh border.. */
 /* We are put some cards in it */
 .semicircle{
@@ -56,6 +63,14 @@ img
   flex-wrap: wrap;
 }
 
+.spazio2{
+  height: 5em;
+  flex-wrap: wrap;
+}
+
+.spaziomaz{
+  height: 5em;
+}
 
 .semicircle .player1{
   position: relative;
@@ -126,7 +141,7 @@ img
 @keyframes sotto {
   90%{
     opacity: 1;
-    transform: translateY( 15vh );
+    transform: translateY( 20vh );
   }
   100%{
     opacity: 0;
@@ -146,7 +161,7 @@ img
 @keyframes destra {
   90%{
     opacity: 1;
-    transform: translate( 200%, 15vh );
+    transform: translate( 200%, 20vh );
   }
   100%{
     opacity: 0;
@@ -156,87 +171,72 @@ img
 @keyframes sinistra {
   90%{
     opacity: 1;
-    transform: translate( -200%, 15vh );
+    transform: translate( -200%, 20vh );
   }
   100%{
     opacity: 0;
   }
 }
 
+.footer{
+  background-color: brown;
+  color: #faf7e4;
+  font-size: 0.65em;
+}
+
 @media only screen and (max-width: 500px) {
 
+  .semicircle{
+    height: 55vh;
+    width: 100%;
+  
+    border-radius: 0 0 20% 20%;
+  }
+
   .spazio1{
-    height: 3.8em;
+    height: 8em;
+  }
+
+  .spazio2{
+    height: 4.2em;
+  }
+
+  .spaziomaz{
+    height: 7em;
     flex-wrap: wrap;
   }
 
   .semicircle .player1{
-    position: relative;
-    z-index: 2;
-  
-    margin: 0.2em 0.2em;
     height: 3.5em;
     width: 2.2em;
-  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    background-color: white;
   }
 
   .iconared{
-    position: absolute;
     font-size: 1.65em;
-  
-    color: red;
   }
 
   .iconablack{
-    position: absolute;
     font-size: 1.65em;
   }
   
   .iconablackrev{
-    position: absolute;
     font-size: 1.65em;
-  
-    transform: rotate(180deg);
+
   }
   
   .player1 p{
-    position: absolute;
     font-size: 0.85em;
-    color: white;
   }
 
-  .mazzo{
-    position: absolute;
-    z-index: 2;
-  
+  .mazzo{  
     height: 3.5em;
     width: 2.2em;
-  
-    opacity: 1;
-    background-image: url("./assets/backCard.png");
-    background-size: cover;
-    background-position: 50% 50%;
   }
   
-  .mazzo1{
-    position: absolute;
-    z-index: 2;
-  
+  .mazzo1{  
     height: 3.5em;
     width: 2.2em;
-  
-    opacity: 1;
-    background-image: url("./assets/backCard.png");
-    background-size: cover;
-    background-position: 50% 50%;
   }
   
-
-
 }
 

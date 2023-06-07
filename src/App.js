@@ -4,8 +4,9 @@ import { useState, useEffect, useId } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faDiamond, faClover } from '@fortawesome/free-solid-svg-icons'
 
-import GameCond from "./components/gameCond"
+import Navbar from "./components/navBar"
 import GameStart from "./components/gameStart"
+import GameCond from "./components/gameCond"
 import GameEnd from "./components/gameEnd"
 
 function App() {
@@ -14,7 +15,6 @@ function App() {
 
   /* We need to treat each array here as an useState, if we dont, then each 
   deck[ carte ][pescato] */
-
   const [mazzi, setMazzi] = useState( ["fiori","spade","quadri","cuori"] )
   
   const [deck, setDeck] = useState({
@@ -55,7 +55,6 @@ function App() {
     setCon("playwin")
     setChoose( true )
   }
-
 
   //USEEFFECT CAN kEEP TRACK of the values of useState
   //IF STATEMENT are not javascript expressions so it wnt work
@@ -276,6 +275,7 @@ function App() {
     setBanco([])
     setSommabanco([])
     setVersus( false )
+    setVersus2( false )
 
     let formdata = new FormData( e.target )
     let final = Object.fromEntries( formdata.entries())
@@ -312,7 +312,9 @@ function App() {
   }
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid p-0 ">
+
+      <Navbar />
 
       <GameCond 
         banco={banco}
@@ -342,6 +344,14 @@ function App() {
                  risulta={con}
         />
       }
+
+      <footer className="bottom-0 text-center text-white p-1 w-100 footer mt-5">
+        <span>Code made by Angelo Zarate, check his </span>
+        <span><a href="https://codepen.io/misterlinux" className="text-warning">Github,</a></span>
+        <span> powered by </span>
+        <span><a href="https://platform.openai.com/" className="text-warning">OpenAI</a></span>
+        <span></span>
+      </footer>
 
     </div>
   );
