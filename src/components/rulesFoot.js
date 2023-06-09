@@ -77,9 +77,9 @@ function Footer(){
 
       <footer className="bottom-0 text-center text-white p-1 w-100 footer mt-3">
         <span>Code made by Angelo Zarate, check his </span>
-        <span><a href="https://codepen.io/misterlinux" className="text-warning">Github,</a></span>
+        <span><a href="https://github.com/Misterlinux?tab=repositories" className="text-warning">Github,</a></span>
         <span> powered by </span>
-        <span><a href="https://platform.openai.com/" className="text-warning">OpenAI</a></span>
+        <span><a href="https://react.dev/" className="text-warning">ReactJs</a></span>
         <span></span>
       </footer>
 
