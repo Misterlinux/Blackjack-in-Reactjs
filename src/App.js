@@ -1,20 +1,15 @@
 import * as React from "react";
 import './App.css';
 import { useState, useEffect, useId } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faDiamond, faClover } from '@fortawesome/free-solid-svg-icons'
 
 import Navbar from "./components/navBar"
 import GameStart from "./components/gameStart"
 import GameCond from "./components/gameCond"
 import GameEnd from "./components/gameEnd"
+import Foot from "./components/rulesFoot"
 
 function App() {
 
-  // ---------------------------
-
-  /* We need to treat each array here as an useState, if we dont, then each 
-  deck[ carte ][pescato] */
   const [mazzi, setMazzi] = useState( ["fiori","spade","quadri","cuori"] )
   
   const [deck, setDeck] = useState({
@@ -56,10 +51,6 @@ function App() {
     setChoose( true )
   }
 
-  //USEEFFECT CAN kEEP TRACK of the values of useState
-  //IF STATEMENT are not javascript expressions so it wnt work
-  //while setGioca is used after teh value is introduced
-  // we use setSomma for teh win/lose conditions of the game
   useEffect(()=>{
     let att;
 
@@ -78,6 +69,7 @@ function App() {
 
       //we need to change this for the 2 player lost
       if(sommapla1 > 21){
+        console.log("we get this-----")
         lose()
       }else if(sommapla2> 21){
         lose()
@@ -85,12 +77,8 @@ function App() {
         lose()
       }
 
-
       if( versus && !sommaplay2.length ){
 
-        //by including the versus in the useEffect we
-        //made sure that the clearInterval will trigger if the condition 
-        //is no longer true, like a backsafe 
         if( sommaban< sommapla1 ){
           att= setInterval(() => {
             pesca("banco")
@@ -100,7 +88,7 @@ function App() {
           setVersus( false )
         }
 
-        if( sommapla1 == sommaban ){
+        if( sommapla1 === sommaban ){
           lose()
         }else if(sommapla1<sommaban && sommaban<= 21 ){
           lose()
@@ -119,14 +107,13 @@ function App() {
           setVersus( false )
         }
 
-        if( sommatot == sommaban*2 ){
+        if( sommatot === sommaban*2 ){
           lose()
         }else if(sommatot<sommaban*2 && sommaban*2 <= 42 ){
           lose()
         }else if( sommaban*2 > 42){
           win()
         }
-
       }
 
     }
@@ -140,7 +127,7 @@ function App() {
 
   function pesca(play, multi){
 
-    if( mazzi.length == 0 ){
+    if( mazzi.length === 0 ){
       window.alert("No more cards to play")
 
       setTimeout(function () {
@@ -148,31 +135,28 @@ function App() {
       }, 1000);
     }else{
 
-      /* we retrieve the random index and from there we get the strin of the values. */
-      /* even the pescato number is an index, considering we have to cut the arrays,  */
       let seme = Math.floor( Math.random()* mazzi.length )
       let carte = mazzi[seme]
 
       let pescato = Math.floor( Math.random()* deck[carte].length )
 
-      //deck[carte][pescato]
-      if( carte == "fiori"){
-        classis = ["fa-solid fa-clover iconablack", 2] 
-      }else if( carte == "spade" ){
-        classis = ["fa-solid fa-heart iconablackrev", 2] 
-      }else if( carte == "quadri" ){
-        classis = ["fa-solid fa-diamond iconared", 2] 
+      if( carte === "fiori"){
+        classis = ["fa-solid fa-clover iconablack", deck[carte][pescato]] 
+      }else if( carte === "spade" ){
+        classis = ["fa-solid fa-heart iconablackrev", deck[carte][pescato]] 
+      }else if( carte === "quadri" ){
+        classis = ["fa-solid fa-diamond iconared", deck[carte][pescato]] 
       }else{
-        classis = ["fa-solid fa-heart iconared", 2]
+        classis = ["fa-solid fa-heart iconared", deck[carte][pescato]]
       }
 
-      if(play == "giocatore1"){
+      if(play === "giocatore1"){
         (multi) ? drawplay1(carte, classis, multi) : drawplay1(carte, classis)
 
-      }else if(play == "banco"){
+      }else if(play === "banco"){
         drawbank(carte, classis)
 
-      }else if( play == "giocatore2" ){
+      }else if( play === "giocatore2" ){
         drawplay2(carte, classis)
       }
 
@@ -180,15 +164,12 @@ function App() {
       let raggio = deck[carte]
       raggio.splice( pescato, 1 )
 
-      //splice modifies the array inline
-      //slice returns a modyfied version of the array, so we can use it
       setDeck((x)=>({
         ...x,
         [carte]: raggio
       }))
 
-      if(raggio.length == 0){
-
+      if(raggio.length === 0){
         let semecopy = mazzi
         semecopy.splice( seme, 1 )
         setMazzi( semecopy )
@@ -197,12 +178,10 @@ function App() {
     }
   }
 
-  //we need to introduce a IF for when to go down and when to go LEFT
   function drawplay1(carte, classis, mult){
 
     (mult) ? setClasse("sinistra 1.5s") : setClasse("sotto 1.5s")
 
-    //we need 2000
     setTimeout(()=>{
       setClasse("")
     }, 750)
@@ -219,7 +198,6 @@ function App() {
     }, 750)
 
     setSommaplay1((x)=> ([...x, classis[1]]))
-    //from here we need to put losign condition
   }
 
   function drawplay2(carte, classis){
@@ -282,7 +260,7 @@ function App() {
 
     setChoose( false )
 
-    if(final.player=="player1"){
+    if(final.player==="player1"){
       setPlayer("1player")
       pesca("giocatore1")
 
@@ -298,17 +276,12 @@ function App() {
         pesca("giocatore2")
       }, 760)
 
-      //so, considering we added an animation timeout
-      //to the card function, IF we want to use it again
-      //without the results random card replacing the first
-      //we need to timeout it after the 750ms of the first
-      //tp finish and set its card on the useState() value
       setTimeout(()=>{
         pesca("banco")
       }, 1550)
 
     }
-    
+
   }
 
   return (
@@ -345,13 +318,7 @@ function App() {
         />
       }
 
-      <footer className="bottom-0 text-center text-white p-1 w-100 footer mt-5">
-        <span>Code made by Angelo Zarate, check his </span>
-        <span><a href="https://codepen.io/misterlinux" className="text-warning">Github,</a></span>
-        <span> powered by </span>
-        <span><a href="https://platform.openai.com/" className="text-warning">OpenAI</a></span>
-        <span></span>
-      </footer>
+      <Foot />
 
     </div>
   );

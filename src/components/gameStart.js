@@ -39,8 +39,8 @@ function Start(props){
 
     return(
       <div className="text-center my-3">
-        <button className="btn btn-success" disabled={props.versus} onClick={ ()=>{ props.pesca("giocatore1")} } > Continue </button>
-        <button className="btn btn-danger" disabled={props.versus} onClick={ ()=> props.setVersus(true) }> Stand </button>
+        <button className="btn btn-success" disabled={props.versus} onClick={ ()=>{ props.pesca("giocatore1")} } > Hit </button>
+        <button className="btn btn-danger ms-1" disabled={props.versus} onClick={ ()=> props.setVersus(true) }> Stand </button>
       </div>
     )
 
@@ -53,7 +53,7 @@ function Start(props){
         <div className="row justify-content-center me-0">
           <form className="row col-10 col-sm-5" onSubmit={props.first}>
 
-            <div className="input-form col-6 text-center my-3">
+            <div className="input-form col-6 text-center my-4">
               <input id={base+ "radio1"} type="radio" className="input-form-check" name="player" 
                      value="player1" defaultChecked={true} />
               <label htmlFor={base+ "radio1"} className="input-form-label"> 
@@ -65,7 +65,7 @@ function Start(props){
               </div>
             </div>
 
-            <div className="input-form col-6 text-center my-3">
+            <div className="input-form col-6 text-center my-4">
               <input id={base+ "radio2"} type="radio" className="input-form-check" name="player" value="player2"/>
               <label htmlFor={base+ "radio2"} className="input-form-label"> 
                 Two players 

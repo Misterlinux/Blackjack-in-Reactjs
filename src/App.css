@@ -40,7 +40,7 @@ img
 /* ------------------------------------ */
 
 .naviga{
-  height: 11vh;
+  height: 10vh;
   background-color: brown;
 }
 
@@ -51,7 +51,7 @@ img
   height: 70vh;
   width: 100%;
 
-  border-radius: 0 0 50% 50%;
+  border-radius: 0 0 40% 40%;
   border-bottom: brown solid 15px;
   background-color: #00694b;
 
@@ -69,7 +69,7 @@ img
 }
 
 .spaziomaz{
-  height: 5em;
+  height: 8em;
 }
 
 .semicircle .player1{
@@ -128,6 +128,7 @@ img
 .mazzo1{
   position: absolute;
   z-index: 2;
+  top: 30px;
 
   height: 5em;
   width: 3em;
@@ -141,7 +142,7 @@ img
 @keyframes sotto {
   90%{
     opacity: 1;
-    transform: translateY( 20vh );
+    transform: translateY( 15vh );
   }
   100%{
     opacity: 0;
@@ -151,7 +152,7 @@ img
 @keyframes sopra {
   90%{
     opacity: 1;
-    transform: translateY( -15vh );
+    transform: translateY( -10vh );
   }
   100%{
     opacity: 0;
@@ -161,7 +162,7 @@ img
 @keyframes destra {
   90%{
     opacity: 1;
-    transform: translate( 200%, 20vh );
+    transform: translate( 500%, 20vh );
   }
   100%{
     opacity: 0;
@@ -171,7 +172,7 @@ img
 @keyframes sinistra {
   90%{
     opacity: 1;
-    transform: translate( -200%, 20vh );
+    transform: translate( -500%, 20vh );
   }
   100%{
     opacity: 0;
@@ -184,7 +185,20 @@ img
   font-size: 0.65em;
 }
 
+.imma{
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/jacklogo.png");
+  background-size: contain;
+  background-position: 50% 50%;
+}
+
+
 @media only screen and (max-width: 500px) {
+
+  .imma{
+    background-size: cover;
+  }
 
   .semicircle{
     height: 55vh;
@@ -202,7 +216,7 @@ img
   }
 
   .spaziomaz{
-    height: 7em;
+    height: 6em;
     flex-wrap: wrap;
   }
 
@@ -238,5 +252,25 @@ img
     width: 2.2em;
   }
   
+  @keyframes destra {
+    90%{
+      opacity: 1;
+      transform: translate( 200%, 20vh );
+    }
+    100%{
+      opacity: 0;
+    }
+  }
+  
+  @keyframes sinistra {
+    90%{
+      opacity: 1;
+      transform: translate( -200%, 20vh );
+    }
+    100%{
+      opacity: 0;
+    }
+  }
+
 }
 

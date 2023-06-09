@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react"
 
 function Game(props){
 
@@ -7,10 +7,10 @@ function Game(props){
 
   function Ending( {fine } ){
 
-    if(fine=="playlose"){
-      return <p>Player lost {sommapla1} to {sommaban} </p>
+    if(fine==="playlose"){
+      return <h5 className="w-50 m-auto p-2 bg-danger text-white">Player lost {sommapla1} to {sommaban} </h5>
     }else{
-      return <p>Player won {sommapla1} to {sommaban} </p>
+      return <h5 className="w-50 m-auto p-2 bg-success text-white">Player won {sommapla1} to {sommaban} </h5>
     }
 
   }
@@ -19,16 +19,23 @@ function Game(props){
 
     let sommapla2 = secondo.reduce(props.sum)
 
-    if(fine=="playlose"){
-      return <p>Players lost {sommapla2 + sommapla1} to {sommaban*2} </p>
+    if(fine==="playlose"){
+
+      if( sommapla1 > 21 ){
+        return <p className="w-50 m-auto p-2 bg-danger text-white">Players lost {sommapla1} to {sommaban} </p>
+      }else if( sommapla2 > 21){
+        return <p className="w-50 m-auto p-2 bg-danger text-white">Players2 lost {sommapla2} to {sommaban} </p>
+      }else{
+        return <p className="w-50 m-auto p-2 bg-danger text-white">Players lost {sommapla2 + sommapla1} to {sommaban*2} </p>
+      }
     }else{
-      return <p>Players won {sommapla2 + sommapla1} to {sommaban*2} </p>
+      return <p className="w-50 m-auto p-2 bg-success text-white">Players won {sommapla2 + sommapla1} to {sommaban*2} </p>
     }
 
   }
 
   return(
-    <div className="text-center">
+    <div className="text-center my-3">
 
       {(props.sommaplay2.length) ?
         <Ending2 fine={props.risulta} secondo={props.sommaplay2} />
