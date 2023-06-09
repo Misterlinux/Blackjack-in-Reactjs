@@ -22,14 +22,14 @@ function Game(props){
     if(fine==="playlose"){
 
       if( sommapla1 > 21 ){
-        return <p className="w-50 m-auto p-2 bg-danger text-white">Players lost {sommapla1} to {sommaban} </p>
+        return <h5 className="w-50 m-auto p-2 bg-danger text-white">Players lost {sommapla1} to {sommaban} </h5>
       }else if( sommapla2 > 21){
-        return <p className="w-50 m-auto p-2 bg-danger text-white">Players2 lost {sommapla2} to {sommaban} </p>
+        return <h5 className="w-50 m-auto p-2 bg-danger text-white">Players2 lost {sommapla2} to {sommaban} </h5>
       }else{
-        return <p className="w-50 m-auto p-2 bg-danger text-white">Players lost {sommapla2 + sommapla1} to {sommaban*2} </p>
+        return <h5 className="w-50 m-auto p-2 bg-danger text-white">Players lost {sommapla2 + sommapla1} to {sommaban*2} </h5>
       }
     }else{
-      return <p className="w-50 m-auto p-2 bg-success text-white">Players won {sommapla2 + sommapla1} to {sommaban*2} </p>
+      return <h5 className="w-50 m-auto p-2 bg-success text-white">Players won {sommapla2 + sommapla1} to {sommaban*2} </h5>
     }
 
   }

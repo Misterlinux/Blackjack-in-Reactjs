@@ -133,6 +133,7 @@ function App() {
       setTimeout(function () {
         window.location.reload()
       }, 1000);
+      
     }else{
 
       let seme = Math.floor( Math.random()* mazzi.length )
